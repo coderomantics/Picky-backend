@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const app = express();
-const port = 3008;
+const port = process.env.PORT || 3008;
 const cors = require('cors');
 const router = require('./router');
 const { mountSocket } = require('./socket')
@@ -18,8 +18,8 @@ app.use(router);
 const io = mountSocket(server);
 
 
-server.listen(process.env.PORT || port, () => {
-    console.log(`Server listening on port ${process.env.PORT || port}`)
+server.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
 });
 
 
